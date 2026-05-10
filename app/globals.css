@@ -1,27 +1,123 @@
+@import "tw-animate-css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===================== DARK MODE (default) ===================== */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0c0c0e;
+  --bg-secondary: #111114;
+  --bg-card: #18181c;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --text-primary: #f1f1f3;
+  --text-secondary: #888891;
+  --text-muted: #55555f;
+  --accent: #7c6dfa;
+  --accent-hover: #9183fb;
+  --success: #22c97a;
+  --warning: #f5a524;
+  --danger: #f43f5e;
+
+  --background: #0c0c0e;
+  --foreground: #f1f1f3;
+  --card: #18181c;
+  --card-foreground: #f1f1f3;
+  --popover: #18181c;
+  --popover-foreground: #f1f1f3;
+  --primary: #7c6dfa;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e24;
+  --secondary-foreground: #c8c8d0;
+  --muted: #1e1e24;
+  --muted-foreground: #888891;
+  --accent-foreground: #ffffff;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+  --input: #1e1e24;
+  --ring: #7c6dfa;
+  --radius: 0.5rem;
+  --sidebar: #0e0e11;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===================== LIGHT MODE ===================== */
+[data-theme="light"] {
+  --bg-primary: #f4f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.16);
+  --text-primary: #111118;
+  --text-secondary: #555560;
+  --text-muted: #999aaa;
+  --accent: #6a5cf0;
+  --accent-hover: #7c6dfa;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #e11d48;
+
+  --background: #f4f4f8;
+  --foreground: #111118;
+  --card: #ffffff;
+  --card-foreground: #111118;
+  --popover: #ffffff;
+  --popover-foreground: #111118;
+  --primary: #6a5cf0;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f5;
+  --secondary-foreground: #333340;
+  --muted: #f0f0f5;
+  --muted-foreground: #555560;
+  --accent-foreground: #ffffff;
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+  --input: #f0f0f5;
+  --ring: #6a5cf0;
+  --sidebar: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .btn-custom {
+    @apply h-[36px] inline-flex items-center justify-center rounded-lg font-medium text-[14px] transition-colors px-4;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .input-custom {
+    @apply h-[36px] rounded-lg border px-3 py-1 text-[14px] outline-none transition-colors;
+    background-color: var(--bg-secondary);
+    border-color: var(--border);
+    color: var(--text-primary);
+  }
+
+  .input-custom:focus {
+    border-color: var(--accent);
+  }
+
+  .input-custom::placeholder {
+    color: var(--text-muted);
+  }
+
+  .card-custom {
+    @apply rounded-xl border p-[20px] transition-colors;
+    background-color: var(--bg-card);
+    border-color: var(--border);
+  }
+
+  .badge-custom {
+    @apply inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium transition-colors;
   }
 }

@@ -1,0 +1,22 @@
+graph TD
+    Root["TechFix loyihasi<br/>(Next.js)"]
+
+    Root --> App["app/<br/>Sahifalar & API"]
+    Root --> Comp["components/<br/>UI qismlar"]
+    Root --> Lib["lib/<br/>Firebase, MongoDB"]
+    Root --> Models["models/<br/>Ma'lumot modellari"]
+    Root --> State["hooks/ + store/<br/>Holat boshqaruvi"]
+    Root --> MW["middleware.ts<br/>Auth himoya"]
+
+    App --> Auth["(auth) — login / register"]
+    App --> Main["(main) — dashboard, advisor,<br/>problem, consultation, profile"]
+    App --> Admin["admin — boshqaruv paneli"]
+    App --> Api["api — backend endpointlar"]
+
+    classDef root fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef folder fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef leaf fill:#dbeafe,stroke:#2563eb,color:#0f172a
+
+    class Root root
+    class App,Comp,Lib,Models,State,MW folder
+    class Auth,Main,Admin,Api leaf
